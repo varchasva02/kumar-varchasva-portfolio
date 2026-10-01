@@ -4,7 +4,7 @@ import { motion } from 'framer-motion'
 interface MagneticButtonProps {
   children: ReactNode
   className?: string
-  onClick?: () => void
+  onClick?: (e: React.MouseEvent) => void
   href?: string
   target?: string
   rel?: string

@@ -2,11 +2,12 @@ import { useRef, useState } from 'react'
 import { motion, useMotionValue, useSpring } from 'framer-motion'
 import FadeIn from '../components/FadeIn'
 import MagneticButton from '../components/MagneticButton'
-import { Mail, Github, Linkedin } from 'lucide-react'
+import { Mail, Github, Linkedin, Check } from 'lucide-react'
 
 const Contact = () => {
   const sectionRef = useRef<HTMLDivElement>(null)
   const [, setMouse] = useState({ x: 0, y: 0 })
+  const [copied, setCopied] = useState(false)
   const glowX = useMotionValue(0)
   const glowY = useMotionValue(0)
   const springX = useSpring(glowX, { stiffness: 30, damping: 25 })
@@ -18,6 +19,14 @@ const Contact = () => {
     setMouse({ x: e.clientX - rect.left, y: e.clientY - rect.top })
     glowX.set(e.clientX - rect.left)
     glowY.set(e.clientY - rect.top)
+  }
+
+  const handleEmailClick = () => {
+    if (navigator.clipboard) {
+      navigator.clipboard.writeText('takvishu33@gmail.com')
+      setCopied(true)
+      setTimeout(() => setCopied(false), 2500)
+    }
   }
 
   return (
@@ -69,10 +78,20 @@ const Contact = () => {
           <div className="flex flex-wrap justify-center gap-4">
             <MagneticButton
               href="mailto:takvishu33@gmail.com"
-              className="inline-flex items-center gap-3 px-8 py-4 rounded-full font-inter text-sm font-medium uppercase tracking-[0.15em] text-cream bg-gradient-to-r from-maroon to-burgundy hover:from-burgundy hover:to-maroon transition-all duration-500 glow-burgundy"
+              onClick={handleEmailClick}
+              className="inline-flex items-center gap-3 px-8 py-4 rounded-full font-inter text-sm font-medium uppercase tracking-[0.15em] text-cream bg-gradient-to-r from-maroon to-burgundy hover:from-burgundy hover:to-maroon transition-all duration-500 glow-burgundy cursor-pointer select-none"
             >
-              <Mail size={16} />
-              Email Me
+              {copied ? (
+                <>
+                  <Check size={16} className="text-cream" />
+                  Copied to Clipboard!
+                </>
+              ) : (
+                <>
+                  <Mail size={16} />
+                  Email Me
+                </>
+              )}
             </MagneticButton>
 
             <MagneticButton
@@ -94,6 +113,18 @@ const Contact = () => {
               <Linkedin size={16} />
               LinkedIn
             </MagneticButton>
+          </div>
+
+          <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-2 text-xs font-inter text-secondary-text/60">
+            <span>Or write directly to:</span>
+            <a
+              href="https://mail.google.com/mail/?view=cm&fs=1&to=takvishu33@gmail.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-beige hover:text-cream underline underline-offset-4 transition-colors font-medium"
+            >
+              takvishu33@gmail.com
+            </a>
           </div>
         </FadeIn>
       </div>
