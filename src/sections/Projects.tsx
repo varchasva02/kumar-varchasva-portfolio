@@ -14,15 +14,16 @@ interface Project {
   live?: string
   icon: React.ReactNode
   gradient: string
+  isFeatured?: boolean
 }
 
-const projects: Project[] = [
+const featuredProjects: Project[] = [
   {
     number: '01',
     category: 'GENERATIVE AI',
     title: 'PDF RAG Assistant',
     description:
-      'An AI-powered PDF question-answering system that retrieves relevant information from uploaded documents and generates contextual responses.',
+      'A Flask-based RAG pipeline that extracts and chunks PDF content, generates Sentence Transformer embeddings, stores them in FAISS, and retrieves relevant context for LLM-powered answers.',
     features: [
       'PDF upload & document chunking',
       'Semantic search with embeddings',
@@ -30,16 +31,17 @@ const projects: Project[] = [
       'LLM-based answer generation',
       'Contextual question answering',
     ],
-    technologies: ['Python', 'Flask', 'FAISS', 'Sentence Transformers', 'Ollama', 'RAG'],
+    technologies: ['Python', 'Flask', 'Sentence Transformers', 'FAISS', 'Ollama', 'RAG'],
     icon: <FileText size={32} />,
     gradient: 'from-burgundy/20 to-maroon/10',
+    isFeatured: true,
   },
   {
     number: '02',
     category: 'COMPUTER VISION / GENERATIVE AI',
     title: 'Vision AI Assistant',
     description:
-      'An AI assistant designed to analyze images and answer user questions about their visual content.',
+      'An AI vision assistant that accepts images and user questions, processes visual information with a vision-capable LLM, and returns contextual responses through an interactive Flask interface.',
     features: [
       'Image upload & preview',
       'Visual question answering',
@@ -49,38 +51,43 @@ const projects: Project[] = [
     technologies: ['Python', 'Flask', 'JavaScript', 'Ollama', 'Vision LLM'],
     icon: <Eye size={32} />,
     gradient: 'from-maroon/20 to-burgundy/10',
+    isFeatured: true,
   },
   {
     number: '03',
     category: 'MACHINE LEARNING',
     title: 'Movie Recommendation System',
     description:
-      'A movie recommendation application that recommends movies based on similarity between movie features.',
+      'A content-based movie recommendation system that uses movie metadata and similarity techniques to recommend movies through a Streamlit interface.',
     features: [
       'Content-based filtering',
       'Feature similarity matching',
       'TMDB API integration',
       'Interactive Streamlit UI',
     ],
-    technologies: ['Python', 'Machine Learning', 'Pandas', 'Scikit-learn', 'Streamlit', 'TMDB API'],
+    technologies: ['Python', 'Pandas', 'Scikit-learn', 'Streamlit', 'TMDB API'],
     github: 'https://github.com/varchasva02/movie-recommendation-system',
     live: 'https://movie-recommendation-system-lknhvdju4agg3wnzzpastt.streamlit.app/',
     icon: <Film size={32} />,
     gradient: 'from-burgundy/15 to-maroon/10',
+    isFeatured: true,
   },
+]
+
+const moreProjects: Project[] = [
   {
     number: '04',
     category: 'MACHINE LEARNING',
     title: 'Loan Approval Prediction',
     description:
-      'A machine learning application that predicts loan approval using classification models — Decision Tree and Random Forest.',
+      'A classification-based machine learning application that predicts loan approval using Decision Tree and Random Forest models through an interactive Streamlit interface.',
     features: [
       'Decision Tree classifier',
       'Random Forest classifier',
       'Model comparison',
       'Streamlit prediction UI',
     ],
-    technologies: ['Python', 'Pandas', 'Scikit-learn', 'Streamlit'],
+    technologies: ['Python', 'Pandas', 'Scikit-learn', 'Decision Tree', 'Random Forest', 'Streamlit'],
     icon: <BarChart3 size={32} />,
     gradient: 'from-maroon/15 to-burgundy/10',
   },
@@ -89,7 +96,7 @@ const projects: Project[] = [
     category: 'MACHINE LEARNING',
     title: 'House Price Prediction',
     description:
-      'A machine learning project for predicting house prices from property-related features.',
+      'A machine learning model that predicts house prices from property-related features using a structured data preprocessing and regression workflow.',
     features: [
       'Feature engineering',
       'Regression modeling',
@@ -106,7 +113,7 @@ const projects: Project[] = [
     category: 'NLP / MACHINE LEARNING',
     title: 'Spam Classifier',
     description:
-      'A text classification system designed to identify whether a message is spam or legitimate.',
+      'An NLP-based text classification system that analyzes message content and predicts whether a message is spam or legitimate.',
     features: [
       'Text preprocessing',
       'NLP feature extraction',
@@ -122,7 +129,7 @@ const projects: Project[] = [
     category: 'FULL STACK / E-COMMERCE',
     title: 'KicksCulture',
     description:
-      'A modern sneaker e-commerce website focused on clean UI, product presentation, and responsive user experience.',
+      'A responsive sneaker e-commerce website focused on product presentation, clean UI, and a modern shopping experience.',
     features: [
       'Product showcase',
       'Responsive design',
@@ -175,6 +182,11 @@ const ProjectCard = ({ project, index }: { project: Project; index: number }) =>
                 <span className="text-[10px] font-inter uppercase tracking-[0.3em] text-secondary-text px-3 py-1 border border-secondary-text/15 rounded-full">
                   {project.category}
                 </span>
+                {project.isFeatured && (
+                  <span className="text-[10px] font-inter uppercase tracking-[0.25em] text-cream bg-burgundy/25 border border-burgundy/40 px-3 py-1 rounded-full font-medium">
+                    Featured
+                  </span>
+                )}
               </div>
 
               <h3 className="font-kanit font-700 text-3xl md:text-4xl lg:text-5xl text-cream mb-4 tracking-tight">
@@ -265,15 +277,47 @@ const Projects = () => {
               SCOUT REPORT // PROJECTS
             </p>
           </div>
-          <h2 className="font-kanit font-800 text-5xl md:text-7xl lg:text-8xl uppercase tracking-tight text-primary-text mb-20">
+          <h2 className="font-kanit font-800 text-5xl md:text-7xl lg:text-8xl uppercase tracking-tight text-primary-text mb-16">
             Selected Projects
           </h2>
         </FadeIn>
 
-        <div className="space-y-6">
-          {projects.map((project, i) => (
-            <ProjectCard key={project.number} project={project} index={i} />
-          ))}
+        {/* Featured Projects */}
+        <div className="mb-20">
+          <FadeIn delay={0.1}>
+            <div className="flex items-center gap-3 mb-10">
+              <span className="w-2 h-2 rounded-full bg-burgundy animate-pulse" />
+              <h3 className="text-xs md:text-sm font-inter uppercase tracking-[0.3em] text-beige/90 font-semibold">
+                Featured Projects
+              </h3>
+              <span className="flex-1 h-[1px] bg-beige/10 ml-2" />
+            </div>
+          </FadeIn>
+
+          <div className="space-y-6">
+            {featuredProjects.map((project, i) => (
+              <ProjectCard key={project.number} project={project} index={i} />
+            ))}
+          </div>
+        </div>
+
+        {/* More Projects */}
+        <div>
+          <FadeIn delay={0.1}>
+            <div className="flex items-center gap-3 mb-10 pt-4">
+              <span className="w-2 h-2 rounded-full bg-secondary-text/50" />
+              <h3 className="text-xs md:text-sm font-inter uppercase tracking-[0.3em] text-secondary-text font-semibold">
+                More Projects
+              </h3>
+              <span className="flex-1 h-[1px] bg-beige/10 ml-2" />
+            </div>
+          </FadeIn>
+
+          <div className="space-y-6">
+            {moreProjects.map((project, i) => (
+              <ProjectCard key={project.number} project={project} index={i} />
+            ))}
+          </div>
         </div>
       </div>
     </section>

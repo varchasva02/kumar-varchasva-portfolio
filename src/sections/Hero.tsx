@@ -283,8 +283,7 @@ const Hero = () => {
             transition={{ duration: 0.7, delay: 0.3, ease: [0.25, 0.1, 0.25, 1] }}
             className="font-inter text-sm md:text-base text-secondary-text/80 max-w-lg mb-10 leading-relaxed"
           >
-            I'm an AIML student passionate about artificial intelligence, machine
-            learning, software development, and building real-world applications.
+            I'm an AIML student building practical applications across machine learning, generative AI, RAG, and software development.
           </motion.p>
 
           {/* Buttons */}
