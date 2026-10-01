@@ -1,4 +1,4 @@
-import { Github, Linkedin } from 'lucide-react'
+import { Github, Linkedin, Mail } from 'lucide-react'
 
 const Footer = () => {
   return (
@@ -30,6 +30,13 @@ const Footer = () => {
             aria-label="LinkedIn"
           >
             <Linkedin size={16} />
+          </a>
+          <a
+            href="mailto:takvishu33@gmail.com"
+            className="hover:text-cream transition-colors"
+            aria-label="Email"
+          >
+            <Mail size={16} />
           </a>
           <span className="text-[10px] font-inter uppercase tracking-[0.2em]">
             © 2026 Kumar Varchasva

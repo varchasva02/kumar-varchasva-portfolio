@@ -68,7 +68,7 @@ const Contact = () => {
         <FadeIn delay={0.2}>
           <div className="flex flex-wrap justify-center gap-4">
             <MagneticButton
-              href="mailto:kumarvarchasva@gmail.com"
+              href="mailto:takvishu33@gmail.com"
               className="inline-flex items-center gap-3 px-8 py-4 rounded-full font-inter text-sm font-medium uppercase tracking-[0.15em] text-cream bg-gradient-to-r from-maroon to-burgundy hover:from-burgundy hover:to-maroon transition-all duration-500 glow-burgundy"
             >
               <Mail size={16} />
