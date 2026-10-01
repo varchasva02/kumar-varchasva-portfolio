@@ -1,0 +1,132 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ── Custom Properties ── */
+:root {
+  --primary: #0C0C0C;
+  --primary-text: #F5F1E8;
+  --secondary-text: #B8B2A8;
+  --maroon: #5A1625;
+  --burgundy: #7A2335;
+  --beige: #D8C7A3;
+  --cream: #F1E8D5;
+}
+
+/* ── Base ── */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  overflow-x: clip;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background: var(--primary);
+  color: var(--primary-text);
+  overflow-x: clip;
+}
+
+::selection {
+  background: var(--burgundy);
+  color: var(--cream);
+}
+
+/* ── Grain Overlay ── */
+.grain-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  pointer-events: none;
+  opacity: 0.035;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  background-size: 128px 128px;
+}
+
+/* ── Scrollbar ── */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #0C0C0C;
+}
+::-webkit-scrollbar-thumb {
+  background: #5A1625;
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #7A2335;
+}
+
+/* ── Marquee ── */
+@keyframes marquee-left {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+@keyframes marquee-right {
+  0% { transform: translateX(-50%); }
+  100% { transform: translateX(0); }
+}
+.animate-marquee-left {
+  animation: marquee-left 40s linear infinite;
+}
+.animate-marquee-right {
+  animation: marquee-right 40s linear infinite;
+}
+
+/* ── Reduced motion ── */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  .animate-marquee-left,
+  .animate-marquee-right {
+    animation: none;
+  }
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+/* ── Glass Nav ── */
+.glass-nav {
+  backdrop-filter: blur(16px) saturate(1.4);
+  -webkit-backdrop-filter: blur(16px) saturate(1.4);
+  background: rgba(12, 12, 12, 0.7);
+  border-bottom: 1px solid rgba(216, 199, 163, 0.06);
+}
+
+/* ── Glow effects ── */
+.glow-burgundy {
+  box-shadow: 0 0 40px rgba(122, 35, 53, 0.15), 0 0 80px rgba(90, 22, 37, 0.08);
+}
+
+.glow-text {
+  text-shadow: 0 0 60px rgba(122, 35, 53, 0.3);
+}
+
+/* ── Section transition ── */
+.section-dark {
+  background: var(--primary);
+}
+
+.section-light {
+  background: var(--cream);
+  color: var(--primary);
+}
+
+/* ── Card glass ── */
+.card-glass {
+  background: rgba(20, 20, 20, 0.6);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(216, 199, 163, 0.08);
+}
