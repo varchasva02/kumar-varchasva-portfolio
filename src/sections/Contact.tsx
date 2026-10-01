@@ -86,7 +86,7 @@ const Contact = () => {
             </MagneticButton>
 
             <MagneticButton
-              href="https://linkedin.com/in/kumar-varchasva"
+              href="https://www.linkedin.com/in/varchasva-tak-aa5b5031a/"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-3 px-8 py-4 rounded-full font-inter text-sm font-medium uppercase tracking-[0.15em] text-beige border border-beige/25 hover:border-beige/50 hover:bg-beige/5 transition-all duration-500"
