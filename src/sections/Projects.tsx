@@ -1,7 +1,7 @@
 import { useRef } from 'react'
 import { motion, useScroll, useTransform } from 'framer-motion'
 import FadeIn from '../components/FadeIn'
-import { ExternalLink, Github, FileText, Eye, Film, BarChart3, Home, Shield, Mail, ShoppingBag } from 'lucide-react'
+import { ExternalLink, Github, FileText, Eye, Film, BarChart3, Home, Shield, Mail } from 'lucide-react'
 
 interface Project {
   number: string
@@ -32,6 +32,7 @@ const featuredProjects: Project[] = [
       'Contextual question answering',
     ],
     technologies: ['Python', 'Flask', 'Sentence Transformers', 'FAISS', 'Ollama', 'RAG'],
+    github: 'https://github.com/varchasva02/pdf-rag-assistant',
     icon: <FileText size={32} />,
     gradient: 'from-burgundy/20 to-maroon/10',
     isFeatured: true,
@@ -49,6 +50,7 @@ const featuredProjects: Project[] = [
       'Interactive chat interface',
     ],
     technologies: ['Python', 'Flask', 'JavaScript', 'Ollama', 'Vision LLM'],
+    github: 'https://github.com/varchasva02/vision-ai-assistant',
     icon: <Eye size={32} />,
     gradient: 'from-maroon/20 to-burgundy/10',
     isFeatured: true,
@@ -88,6 +90,8 @@ const moreProjects: Project[] = [
       'Streamlit prediction UI',
     ],
     technologies: ['Python', 'Pandas', 'Scikit-learn', 'Decision Tree', 'Random Forest', 'Streamlit'],
+    github: 'https://github.com/varchasva02/loan-approval-ui',
+    live: 'https://gpe2g5cekxkvhzfexpfhdt.streamlit.app/',
     icon: <BarChart3 size={32} />,
     gradient: 'from-maroon/15 to-burgundy/10',
   },
@@ -121,25 +125,9 @@ const moreProjects: Project[] = [
       'Message scoring',
     ],
     technologies: ['Python', 'NLP', 'Text Classification', 'Machine Learning'],
+    github: 'https://github.com/varchasva02/spam-classifier',
     icon: <Mail size={32} />,
     gradient: 'from-maroon/15 to-burgundy/10',
-  },
-  {
-    number: '07',
-    category: 'FULL STACK / E-COMMERCE',
-    title: 'KicksCulture',
-    description:
-      'A responsive sneaker e-commerce website focused on product presentation, clean UI, and a modern shopping experience.',
-    features: [
-      'Product showcase',
-      'Responsive design',
-      'Clean UI/UX',
-      'Interactive product pages',
-    ],
-    technologies: ['HTML', 'CSS', 'JavaScript', 'Web Development'],
-    live: 'https://kicksculture.vercel.app/',
-    icon: <ShoppingBag size={32} />,
-    gradient: 'from-burgundy/15 to-maroon/10',
   },
 ]
 
