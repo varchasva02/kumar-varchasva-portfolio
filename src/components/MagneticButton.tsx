@@ -8,9 +8,10 @@ interface MagneticButtonProps {
   href?: string
   target?: string
   rel?: string
+  download?: string | boolean
 }
 
-const MagneticButton = ({ children, className = '', onClick, href, target, rel }: MagneticButtonProps) => {
+const MagneticButton = ({ children, className = '', onClick, href, target, rel, download }: MagneticButtonProps) => {
   const ref = useRef<HTMLDivElement>(null)
   const [position, setPosition] = useState({ x: 0, y: 0 })
 
@@ -28,7 +29,7 @@ const MagneticButton = ({ children, className = '', onClick, href, target, rel }
   }
 
   const Tag = href ? 'a' : 'button'
-  const linkProps = href ? { href, target, rel } : {}
+  const linkProps = href ? { href, target, rel, download } : {}
 
   return (
     <motion.div

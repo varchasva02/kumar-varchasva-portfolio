@@ -2,7 +2,7 @@ import { useRef, useState } from 'react'
 import { motion, useMotionValue, useSpring } from 'framer-motion'
 import FadeIn from '../components/FadeIn'
 import MagneticButton from '../components/MagneticButton'
-import { Mail, Github, Linkedin, Check } from 'lucide-react'
+import { Mail, Github, Linkedin, Check, FileDown } from 'lucide-react'
 
 const Contact = () => {
   const sectionRef = useRef<HTMLDivElement>(null)
@@ -111,6 +111,17 @@ const Contact = () => {
             >
               <Linkedin size={16} />
               LinkedIn
+            </MagneticButton>
+
+            <MagneticButton
+              href="/Varchasva_cv.pdf"
+              download="Kumar_Varchasva_CV.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-3 px-8 py-4 rounded-full font-inter text-sm font-medium uppercase tracking-[0.15em] text-beige border border-beige/25 hover:border-beige/50 hover:bg-beige/5 transition-all duration-500"
+            >
+              <FileDown size={16} />
+              Download CV
             </MagneticButton>
           </div>
 
